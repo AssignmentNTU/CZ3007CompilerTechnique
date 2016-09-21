@@ -81,6 +81,7 @@ PrimaryExpression = LeftHandExpression | FunctionCall | ArrayExpression | STRING
 
 FunctionCall = ID LPAREN OptionalEmptyExpressionList RPAREN;
 OptionalEmptyExpressionList = ExpressionList | ;
+
 ExpressionList = Expression COMMA ExpressionList | Expression;
 
 ArrayExpression = LBRACKET ExpressionList RBRACKET;

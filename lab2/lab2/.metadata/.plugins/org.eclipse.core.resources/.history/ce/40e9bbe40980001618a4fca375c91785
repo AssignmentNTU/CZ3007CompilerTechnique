@@ -46,10 +46,9 @@ TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
 Accessibility = PUBLIC | ;
 TypeName = PrimitiveType | ArrayType | ID;
 PrimitiveType = VOID | BOOLEAN | INT ;
-ArrayType = PrimitiveType LBRACKET RBRACKET |
-			ArrayType LBRACKET RBRACKET |
-			ID LBRACKET RBRACKET ;
+ArrayType = PrimitiveType BRACKETS | ArrayType BRACKETS | ID BRACKETS;
 BRACKETS = LBRACKET RBRACKET;
+
 ParameterList = ParamList | ;
 ParamList = Parameter COMMA ParamList | Parameter;
 Parameter = TypeName ID;
@@ -70,8 +69,8 @@ Assignment = LeftHandExpression EQL Expression;
 RightHandExpression = ArithmeticExpression | ArithmeticExpression ComparisonOperator ArithmeticExpression;
 ComparisonOperator = EQEQ | NEQ | LT | LEQ | GT | GEQ;
 LeftHandExpression = ID | ArrayAccess;
-ArrayAccess = LeftHandExpression LBRACKET Expression RBRACKET;
-
+ArrayAccess = ID BracketExpression | LeftHandExpression BracketExpression;
+BracketExpression = LBRACKET Expression RBRACKET;
 ArithmeticExpression = ArithmeticExpression AdditiveOperator Term | Term;
 AdditiveOperator = PLUS | MINUS;
 Term = Term MultiplicativeOperator Factor | Factor;
@@ -81,7 +80,8 @@ PrimaryExpression = LeftHandExpression | FunctionCall | ArrayExpression | STRING
 
 FunctionCall = ID LPAREN OptionalEmptyExpressionList RPAREN;
 OptionalEmptyExpressionList = ExpressionList | ;
-ExpressionList = Expression COMMA ExpressionList | Expression;
+ExpressionList = ExpressList Expression;
+ExpressList = Expression COMMA ExpressList | ;
 
 ArrayExpression = LBRACKET ExpressionList RBRACKET;
 

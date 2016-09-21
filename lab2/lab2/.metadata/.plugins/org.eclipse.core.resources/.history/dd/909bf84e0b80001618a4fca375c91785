@@ -46,9 +46,7 @@ TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
 Accessibility = PUBLIC | ;
 TypeName = PrimitiveType | ArrayType | ID;
 PrimitiveType = VOID | BOOLEAN | INT ;
-ArrayType = PrimitiveType LBRACKET RBRACKET |
-			ArrayType LBRACKET RBRACKET |
-			ID LBRACKET RBRACKET ;
+ArrayType = TypeName LBRACKET RBRACKET ;
 BRACKETS = LBRACKET RBRACKET;
 ParameterList = ParamList | ;
 ParamList = Parameter COMMA ParamList | Parameter;
@@ -81,7 +79,8 @@ PrimaryExpression = LeftHandExpression | FunctionCall | ArrayExpression | STRING
 
 FunctionCall = ID LPAREN OptionalEmptyExpressionList RPAREN;
 OptionalEmptyExpressionList = ExpressionList | ;
-ExpressionList = Expression COMMA ExpressionList | Expression;
+ExpressionList = ExpressList Expression;
+ExpressList = Expression COMMA ExpressList | ;
 
 ArrayExpression = LBRACKET ExpressionList RBRACKET;
 

@@ -39,20 +39,20 @@ ImportStatement = IMPORT ID SEMICOLON;
 
 Declarations = Declarations DeclarationStatement | ;
 DeclarationStatement = FunctionalDeclaration | FieldDeclaration | TypeDeclaration;
-FunctionalDeclaration = Accessibility TypeName ID LPAREN ParameterList RPAREN LCURLY Statements RCURLY;
+FunctionalDeclaration = Accessibility;
 FieldDeclaration = Accessibility TypeName ID SEMICOLON;
 TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
 
 Accessibility = PUBLIC | ;
 TypeName = PrimitiveType | ArrayType | ID;
 PrimitiveType = VOID | BOOLEAN | INT ;
-ArrayType = PrimitiveType LBRACKET RBRACKET |
-			ArrayType LBRACKET RBRACKET |
-			ID LBRACKET RBRACKET ;
-BRACKETS = LBRACKET RBRACKET;
-ParameterList = ParamList | ;
-ParamList = Parameter COMMA ParamList | Parameter;
+ArrayType = TypeName LBRACKET RBRACKET;
+
+ParameterList = ParamList Parameter | ;
+ParamList = ParamList COMMA Parameter | ;
 Parameter = TypeName ID;
+
+
 
 BlockStatement = LCURLY Statements RCURLY;
 Statements = Statement Statements | ;
@@ -81,7 +81,8 @@ PrimaryExpression = LeftHandExpression | FunctionCall | ArrayExpression | STRING
 
 FunctionCall = ID LPAREN OptionalEmptyExpressionList RPAREN;
 OptionalEmptyExpressionList = ExpressionList | ;
-ExpressionList = Expression COMMA ExpressionList | Expression;
+ExpressionList = ExpressList Expression;
+ExpressList = Expression COMMA ExpressList | ;
 
 ArrayExpression = LBRACKET ExpressionList RBRACKET;
 
