@@ -1,0 +1,111 @@
+package test;
+
+import static frontend.Token.Type.EOF;
+import static frontend.Token.Type.FALSE;
+import static frontend.Token.Type.MODULE;
+import static frontend.Token.Type.RETURN;
+import static frontend.Token.Type.STRING_LITERAL;
+import static frontend.Token.Type.WHILE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.IOException;
+import java.io.StringReader;
+
+import lexer.Lexer;
+
+import org.junit.Test;
+
+import frontend.Token;
+import frontend.Token.Type;
+
+/**
+ * This class contains unit tests for your lexer. Currently, there is only one test, but you
+ * are strongly encouraged to write your own tests.
+ */
+public class LexerTests {
+	// helper method to run tests; no need to change this
+	private final void runtest(String input, Token... output) {
+		
+		Lexer lexer = new Lexer(new StringReader(input));
+		int i=0;
+		Token actual, expected;
+		try {
+			do {
+				assertTrue(i < output.length);
+				expected = output[i++];
+				try {
+					actual = lexer.nextToken();
+					System.out.println("lexeme: "+actual.lexeme+" "+"type token: "+actual.type+" yycolumn:"+actual.column);
+					
+					assertEquals(expected, actual);
+				} catch(Error e) {
+					if(expected != null)
+						fail(e.getMessage());
+					return;
+				}
+			} while(!actual.isEOF());
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
+//	/** Example unit test. */
+//	@Test
+//	public void testKWs() {
+//		// first argument to runtest is the string to lex; the remaining arguments
+//		// are the expected tokens
+//		runtest("module false return while",
+//				new Token(MODULE, 0, 0, "module"),
+//				new Token(FALSE, 0, 7, "false"),
+//				new Token(RETURN, 0, 13, "return"),
+//				new Token(WHILE, 0, 20, "while"),
+//				new Token(EOF, 0, 25, ""));
+//	}
+
+//	@Test
+//	public void testStringLiteralWithDoubleQuote() {
+//		runtest("\"\"11111\"\"\"\"\"\"\"\"\"",
+//				new Token(STRING_LITERAL, 0, 0, ""),
+//				new Token(Type.INT_LITERAL, 0, 2, ""),
+//				new Token(STRING_LITERAL, 0, 6, ""),
+//				new Token(STRING_LITERAL, 0, 0, ""),
+//				new Token(STRING_LITERAL, 0, 0, ""));
+//	}
+	
+//	@Test
+//	public void testStringLiteral() {
+//		runtest("\"\\n\"", 
+//				new Token(STRING_LITERAL, 0, 0, "\\n"),
+//				new Token(EOF, 0, 4, ""));
+//
+//	}
+	
+	
+//	@Test
+//	public void testIntegerLiteralMinusPLus(){
+//		runtest("-1",
+//				new Token(Type.MINUS, 0, 0, "-"),
+//				new Token(Type.INT_LITERAL, 0, 1, "1"),
+//				new Token(Type.EOF,0,2,""));
+//	}
+	
+	
+	@Test
+	public void testAnotherTypeOnStringLiteral(){
+		runtest("\"\"\"",
+				new Token(Type.STRING_LITERAL, 0, 0, ""),
+				new Token(Type.EOF,0,3,"")
+		);
+		
+	}
+	
+	
+	
+	
+	
+	
+
+}

@@ -37,10 +37,7 @@ import static frontend.Token.Type.*;
 
 /* This definition may come in handy. If you wish, you can add more definitions here. */
 WhiteSpace = [ ] | \t | \f | \n | \r
-alphabet= [a-zA-Z]
 num		= [0-9]
-alphanum = [a-zA-Z0-9]
-
 
 %%
 /* put in your rules here.    */

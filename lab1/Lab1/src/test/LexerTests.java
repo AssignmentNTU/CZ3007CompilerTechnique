@@ -18,6 +18,7 @@ import lexer.Lexer;
 import org.junit.Test;
 
 import frontend.Token;
+import frontend.Token.Type;
 
 /**
  * This class contains unit tests for your lexer. Currently, there is only one test, but you
@@ -36,7 +37,7 @@ public class LexerTests {
 				expected = output[i++];
 				try {
 					actual = lexer.nextToken();
-					System.out.println("lexeme: "+actual.lexeme+" "+"type token: "+actual.type);
+					System.out.println("lexeme: "+actual.lexeme+" "+"type token: "+actual.type+" yycolumn:"+actual.column);
 					
 					assertEquals(expected, actual);
 				} catch(Error e) {
@@ -78,6 +79,28 @@ public class LexerTests {
 				new Token(EOF, 0, 4, ""));
 
 	}
+	
+	
+	@Test
+	public void testIntegerLiteralMinusPLus(){
+		runtest("-1",
+				new Token(Type.MINUS, 0, 0, "-"),
+				new Token(Type.INT_LITERAL, 0, 1, "1"),
+				new Token(Type.EOF,0,2,""));
+	}
+	
+	
+//	@Test
+//	public void testAnotherTypeOnStringLiteral(){
+//		runtest("\"\"\"",
+//				new Token(Type.STRING_LITERAL, 0, 0, ""),
+//				new Token(Type.EOF,0,3,"")
+//		);
+//		
+//	}
+	
+	
+	
 	
 	
 	

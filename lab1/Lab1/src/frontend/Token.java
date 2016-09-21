@@ -60,7 +60,7 @@ public final class Token {
 	};
 	
 	public final Type type;
-	private final int line, column;
+	public final int line, column;
 	public final String lexeme;
 	
 	public Token(Type type, int line, int column, String lexeme) {
