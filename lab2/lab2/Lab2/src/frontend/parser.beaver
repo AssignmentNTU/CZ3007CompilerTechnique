@@ -48,7 +48,7 @@ TypeName = PrimitiveType | ArrayType | ID;
 PrimitiveType = VOID | BOOLEAN | INT ;
 ArrayType = PrimitiveType LBRACKET RBRACKET |
 			ArrayType LBRACKET RBRACKET |
-			ID LBRACKET RBRACKET ;
+			ID LBRACKET RBRACKET;
 BRACKETS = LBRACKET RBRACKET;
 ParameterList = ParamList | ;
 ParamList = Parameter COMMA ParamList | Parameter;
@@ -82,7 +82,6 @@ PrimaryExpression = LeftHandExpression | FunctionCall | ArrayExpression | STRING
 FunctionCall = ID LPAREN OptionalEmptyExpressionList RPAREN;
 OptionalEmptyExpressionList = ExpressionList | ;
 ExpressionList = Expression COMMA ExpressionList | Expression;
-
 ArrayExpression = LBRACKET ExpressionList RBRACKET;
 
 BoolLiteral = TRUE | FALSE;
