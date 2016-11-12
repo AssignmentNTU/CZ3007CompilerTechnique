@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="soot.jimple.StringConstant"/>
+<fullyQualifiedTypeName name="ast.Expr"/>
+<fullyQualifiedTypeName name="com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException"/>
+<fullyQualifiedTypeName name="soot.jimple.IntConstant"/>
+<fullyQualifiedTypeName name="ast.IntLiteral"/>
+<fullyQualifiedTypeName name="soot.jimple.NewArrayExpr"/>
+<fullyQualifiedTypeName name="soot.jimple.Jimple"/>
+<fullyQualifiedTypeName name="ast.Visitor"/>
+<fullyQualifiedTypeName name="ast.AddExpr"/>
+<fullyQualifiedTypeName name="backend.ExprCodeGenerator"/>
+</qualifiedTypeNameHistroy>
