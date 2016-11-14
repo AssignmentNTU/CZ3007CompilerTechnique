@@ -97,7 +97,10 @@ public class ExprCodeGenerator extends Visitor<Value> {
 	
 	/** Generate code for an integer literal. */
 	@Override
-	public Value visitIntLiteral(IntLiteral nd) {  }
+	public Value visitIntLiteral(IntLiteral nd) {
+		/* TODO: return something meaningful here */
+		return IntConstant.v(nd.getValue());
+	}
 	
 	/** Generate code for a string literal. */
 	@Override

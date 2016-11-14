@@ -297,7 +297,7 @@ public class CompilerTests {
 				10);
 	}
 	
-	@Test public void testAddition() {
+	@Test public void testAdddddddddddd() {
 		runtest("module Test {" +
 				"  public int f() {" +
 				"    return 23+19;" +
